@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.my_toolbar))
         val keyboard = findViewById<LinearLayout>(R.id.keyboard)
 
-        MyKeyboard().createKayboard(this, keyboard)
+        MyKeyboard(this).createKayboard(keyboard)
 
     }
 
