@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.view.Gravity
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.text.isDigitsOnly
 import kotlinx.coroutines.selects.select
@@ -31,7 +32,7 @@ class MyKeyboard(context: Context?)  {
     )
 
 
-    fun createKayboard(keyboard : LinearLayout){
+    fun createKayboard(keyboard : LinearLayout, resultText: TextView){
 
 
         keyboard.setOrientation(LinearLayout.VERTICAL)
@@ -47,9 +48,9 @@ class MyKeyboard(context: Context?)  {
                 count++
 
                 if (count == 13 || count == 15){
-                    fila.addView(createButton(250, 250, "", Color.CYAN, false))
+                    fila.addView(createButton(250, 250, "", Color.CYAN, false, resultText))
                 }else{
-                    fila.addView(createButton(250, 250, arrayKeycapes[count-1], Color.DKGRAY, true))
+                    fila.addView(createButton(250, 250, arrayKeycapes[count-1], Color.DKGRAY, true, resultText))
                 }
                 println(count)
             }
@@ -62,7 +63,7 @@ class MyKeyboard(context: Context?)  {
         val fila = createRow(Gravity.CENTER, LinearLayout.HORIZONTAL)
 
 
-        fila.addView(createButton(250, 1200, "RESULTADO", Color.DKGRAY, true))
+        fila.addView(createButton(250, 1200, "RESULTADO", Color.DKGRAY, true, resultText))
 
 
         keyboard.addView(fila)
@@ -70,7 +71,7 @@ class MyKeyboard(context: Context?)  {
 
 
 
-    fun createButton(height: Int, width: Int, text: String, color : Int, click : Boolean): Button{
+    fun createButton(height: Int, width: Int, text: String, color : Int, click : Boolean, resultText: TextView): Button{
         val button = Button(contextLocal)
         button.setText(text)
         button.setHeight(height)
@@ -79,7 +80,7 @@ class MyKeyboard(context: Context?)  {
         button.setEnabled(click)
         //button.id = button.getText()
 
-        actionDigits(button)
+        actionDigits(button, resultText)
 
         return button
     }
@@ -93,7 +94,7 @@ class MyKeyboard(context: Context?)  {
     }
 
 
-    fun actionDigits(button: Button) {
+    fun actionDigits(button: Button, resultText: TextView) {
         button.setOnClickListener {
             /*if(digitsClick >= 0){
                 Toast.makeText(contextLocal, button.getText(), Toast.LENGTH_SHORT).show()
@@ -125,7 +126,7 @@ class MyKeyboard(context: Context?)  {
 
             var operadores = operacion.split(Regex("[0-9]"))
             Toast.makeText(contextLocal, operadores.toString(), Toast.LENGTH_LONG).show()
-
+            resultText.setText(operacion)
 
             //Perfeccionar forma de obtener operadores y números
 

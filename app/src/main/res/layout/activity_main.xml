@@ -5,6 +5,7 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="end"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -68,12 +69,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/resultText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="TextView"
-                android:gravity="right"/>
+                android:gravity="bottom|center|right"
+                android:text="0"
+                android:textColor="#050505"
+                android:textSize="60sp" />
 
         </LinearLayout>
 

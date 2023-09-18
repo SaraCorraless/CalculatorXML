@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -16,8 +17,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.my_toolbar))
         val keyboard = findViewById<LinearLayout>(R.id.keyboard)
+        val resultText = findViewById<TextView>(R.id.resultText)
 
-        MyKeyboard(this).createKayboard(keyboard)
+        MyKeyboard(this).createKayboard(keyboard, resultText)
 
     }
 
